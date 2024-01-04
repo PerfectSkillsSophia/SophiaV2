@@ -1,0 +1,100 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="section">
+    <div class="container-fluid" id="question">
+        <div class="row">
+            <a href="{% url 'Dashboard' %}">
+                <img src="{% static 'image/back.png' %}" id="back_btn" alt="">
+            </a>
+            <h3 id="h3_aa"> Add Questions</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="container-fluid" id="container_note">
+        <div class="row">
+            <div class="col">
+                <h6>Note:</h6>
+                <ol style="color: #7D7D7D;">
+                    <li>Directly start writing Question don't use "que:-"</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container-fluid" id="question_form">
+        <div class="row">
+            <div class="col">
+                {% for assessment in assessment.all %}
+                {% if assessment.assessment_type == "Subjective" %}
+                <form action="{% url 'Uplaod_Questions'  %}">
+                    <div class="form-group">
+                        <select class="form-control" name="assessment_code" id="assessment_code">
+                            <option value="{{ assessment.assessment_code }}">{{ assessment.assessment_name }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="question" type="question" placeholder="Write Question">
+                    </div>
+                    <button class="btn btn-block" id="form_btn" type="submit">ADD</button>
+                </form>
+                {% else %}
+                <form action="{% url 'Uplaod_Questions'  %}">
+                    <div class="form-group">
+                        <select class="form-control" name="assessment_code" id="assessment_code">
+                            <option value="{{ assessment.assessment_code }}">{{ assessment.assessment_name }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="question" type="question" placeholder="Write Question">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="answer" type="answer" placeholder="Provide Answer"></textarea>
+                    </div>
+                    <button class="btn btn-block" id="form_btn" type="submit">ADD</button>
+                </form>
+                {% endif %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container-fluid">
+        
+        <div class="row">
+            <h3 id="h3_qa"> Question and Answers</h3>
+        </div>
+        {% for assessment in assessment.all %}
+        {% if assessment.assessment_type == "Subjective" %}
+        {% for que in ques.all reversed %}
+        <div class="row">
+            <p style="margin-left: 10px;" class="card-text"><span style="color: #6A696E;">Question:
+                </span>{{ que.question }}</p>
+        </div>
+        {% endfor %}
+        {% else %}
+        {% for que in ques.all reversed %}
+        <div class="row">
+            <p style="margin-left: 10px;" class="card-text"><span style="color: #6A696E;">Question:
+                </span>{{ que.question }}</p>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+            <p style="margin-left: 10px;" class="card-text"><span style="color: #6A696E;">Answer:
+                </span>{{ que.correctanswer }}</p>
+        </div>
+        
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        
+    </div>
+    <hr>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'CSS/assessments_main.css' %}"></head>
+
+
+<body id="grad1">
+
+<div class="container">
+
+    <!-- Dynamic Background Design Starts-->
+    <div id="margin1">
+        <div id="page1"></div>
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+        <div id="box4"></div>
+        <div id="box5"></div>
+        <div id="logo1"><img src="{% static 'image/fav.png' %}"></div>
+    </div>
+    <!-- Dynamic Background Design Ends-->
+
+    <!--Page Content1 Starts-->
+    <div id="infoBox">
+        <h1 id="header1">Sign Up</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+        <span id="span1">
+            <span id="underl1"><input type="text" id="uname" name="username" placeholder="Username"><img src="{% static 'image/Icons/Vector (5).png' %}" id="unImg1"></span>
+        </span>
+
+        <span id="span1">
+            <img src="{% static 'image/Icons/Vector (12).png' %}" id="crtImg1"><p id="info1">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only</p>
+        </span>
+
+        <span id="span1">
+            <span id="underl2"><input type="text" id="fname" name="first_name" placeholder="First Name"></span>
+            <span id="underl2"><input type="text" id="lname" name="last_name" placeholder="Last Name"></span>
+        </span>
+
+        <span id="span1">
+            <span id="underl1"><input type="text" id="email" name="email" placeholder="Email"><img src="{% static 'image/Icons/Vector (14).png' %}" id="elImg1"></span>
+        </span>
+
+        <span id="span1">
+            <span id="underl1"><input type="password" id="passwd" name="password1" placeholder="Password"><img src="{% static 'image/Icons/Vector (6).png' %}" id="psImg1"></span>
+        </span>
+
+        <span id="span1">
+            <img src="{% static 'image/Icons/Vector (12).png' %}" id="crtImg1"><p id="info1">Can’t be similar to personal info</p>
+            <img src="{% static 'image/Icons/Vector (12).png' %}" id="crtImg1"><p id="info1">Can’t be a commonly used</p>
+        </span>
+
+        <span id="span1">
+            <img src="{% static 'image/Icons/Vector (12).png' %}" id="crtImg1"><p id="info1">Contain at least 8 characters</p>
+            <img src="{% static 'image/Icons/Vector (12).png' %}" id="crtImg1"><p id="info1">Can’t be entirely numeric</p>
+        </span>
+
+        <span id="span1">
+            <span id="underl1"><input type="password" id="cpasswd" name="password2" placeholder="Confirm Password"><img src="{% static 'image/Icons/Vector (15).png' %}" id="cpImg1"></span>
+        </span>
+
+        <span id="span1">
+            <img src="Icons/Vector (12).png" id="crtImg1"><p id="info1">Enter the same password to confirm verification</p>
+        </span>
+
+        <br>
+
+        <span id="span1">
+            <button id="btn1" style="height: 3vh;"><p id="btnLbl1">Register</p><span style="display: inline-block;width: 35%;"></span><img src="{% static 'image/Icons/Vector (13).png' %}" id="btImg1"><span style="display: inline-block;width: 5%;"></span></button>
+        </span>
+    </form>
+
+        <span id="span1">
+            <p id="lbl2">Already have an Account?</p><a href="{% url 'login' %}" id="aref2">Sign In</a>
+        </span>
+
+
+    </div>
+    <!--Page Content1 Ends-->
+
+    <!--Page Content2 Starts-->
+    <div id="wlcmBox">
+        
+        <span id="span1">
+            <div id="wlLbl1">Welcome to</div>
+        </span>
+       <br>
+
+        <span id="span1">
+            <div id="viLbl1">Virtual Interview</div>
+        </span>
+        <br><br><br>
+
+        <span id="span1">
+            <div id="sgnLbl1">By Signing in, you agree with Perfect Skills</div>
+        </span>
+        <br>
+        <span id="span1">
+            <a href="#" id="aref3">Terms & Conditions</a><div id="anLbl1">and</div><a href="#" id="aref4">Terms & Conditions</a>
+        </span>
+    </div>
+    <!--Page Content2 Ends-->
+
+</div>
+    
+</body>
+</html>

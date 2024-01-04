@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'CSS/assessments_dashboard.css' %}">
+</head>
+
+<body id="grad1">
+    <!-- Dynamic Background Design Starts-->
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+    <!-- Dynamic Background Design Ends-->
+
+    <!--Page Content Starts-->
+    <div id="bkbtn1">
+        <a href="{% url 'Home' %}"> <button id="bkB1"><img src="{% static 'image/Icons/Vector (8).png' %}" id="bkImg1">
+                <p id="bkLbl1">Back</p>
+            </button></a>
+    </div>
+
+    <div id="lobtn1">
+        <a href="{% url 'logout' %}"><button id="loB1">
+                <p id="loLbl1">Log Out</p>
+            </button></a>
+    </div>
+
+    <div id="content1">
+        <span id="span1">
+            <p id="txt2" style="margin-bottom: 0;">Hello, {{ username }}!</p>
+        </span>
+        <span id="span1">
+            <p id="txt3" style="margin-bottom: 0;">This is your next step for</p>
+        </span>
+        <span id="span1">
+            <p id="txt4" style="margin-top: 0.6vh;margin-bottom: 0;">{{ assessment_name }}</p>
+        </span>
+        <span id="span1">
+            <p id="txt1">Each Questions: 5 Mins</p>
+        </span>
+
+        <p id="hr1"></p>
+
+        <span id="span1">
+            <p id="txt5"><b>For each question, you will follow the following steps:</b>
+                <br><br>
+                This video interview will help us understand your background. Be mindful of your time and for the video
+                responses, stay on topic so you can convey a complete response.
+
+            </p>
+        </span>
+
+        <span id="span1">
+            <ol style="padding-left: 10vw;padding-right: 10vw;">
+                <li id="txt6"><b>After Proceed Paste ASSESSMENT CODE</b></li>
+                <li id="txt6">Click <b>Start</b> to start your video streaming</li>
+                <li id="txt6">Click <b>Record</b> to start video recording</li>
+                <li id="txt6">Click <b>Next</b> to go on next question</li>
+                <li id="txt6">Click <b>Stop</b> to stop video recording</li>
+                <li id="txt6">Click <b>Submit</b> to submit your video assessment</li>
+            </ol>
+        </span>
+        <br>
+
+        <span id="span1">
+            <a href="{% url 'Assessments' assessment_code=assessment_code %}"><button id="btn1"
+                    style="height: 3vh;">
+                    <p id="btnLbl1">Start Now</p><span style="display: inline-block;width: 35%;"></span><img
+                        src="{% static 'image/Icons/Vector (13).png' %}" id="btImg1"><span
+                        style="display: inline-block;width: 5%;"></span>
+                </button></a>
+        </span>
+
+    </div>
+
+    <!--Page Content Ends-->
+
+</body>
+
+</html>
