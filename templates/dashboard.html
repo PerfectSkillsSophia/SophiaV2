@@ -7,18 +7,18 @@
 <div class="section">
     <div class="container-fluid" id="container1">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <h4>Hello, Admin!</h4>
-                <p style="font-size: 15px;">Get hire the most talented candidates with Sophia. This will simply
+                <p style="font-size: 15px;">Get hire the most talented candidates with Sophia. This will simplify
                     interview process for you!</p>
             </div>
 
-            <div class="col-lg-3 ">
+            <div class="col-lg-2 ">
                 <a class="btn btn-lg btn-block" id="add_assessments_btn" href="{% url 'Add_Assessments' %}"
                     role="button">Add Assessment</a>
 
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <a class="btn btn-lg btn-block" id="all_submissions_btn" href="{% url 'All_Submissions' %}"
                     role="button">All Submissions</a>
 
@@ -31,19 +31,17 @@
         <div class="row" style="margin-bottom: 10px; margin-left: 10px;">
             <h3>Assessments</h3>
         </div>
-        <hr id="hr">
-
         <div class="row" id="card_cont">
             {% for assessment in assessment.all %}
             <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header">
-                        {{ assessment.assessment_name }}
+                        <h5>{{ assessment.assessment_name }}</h5>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Assessment Code:</h5>
+                        <h6 class="card-title">Assessment Code:</h6>
                         <p class="card-text">{{ assessment.assessment_code }}</p>
-                        <a class="btn btn-lg btn-block" id="card_btn" href="add_questions/{{assessment.assId}}" role="button">Add
+                        <a class="btn" id="card_btn" href="add_questions/{{assessment.assId}}" role="button">Add
                             Questions</a>
                     </div>
                 </div>
@@ -53,7 +51,7 @@
     </div>
 
 </div>
-<hr>
+
 
 
 

@@ -1,0 +1,211 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="section" style="margin-top: 20px; ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-... (use the integrity attribute from Font Awesome)">
+
+    <div class="container-fluid" id="analysis">
+        <div class="row">
+            <a href="{% url 'All_Submissions' %}">
+                <img src="{% static 'image/backbutton.png' %}" id="back_btn" alt="">
+            </a>
+            <div class="ml-auto"> <!-- Add this div to push the button to the right -->
+                <a class="btn" id="card_btn" style="margin-right: 20px;" href="#" role="button"><i class="fas fa-download" style="margin-right: 5px;"></i>Download Result</a>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    {% for i in F_result %}
+    {% if i.result_generate %}
+    {% if i.assessment_type == 'Descriptive' %}
+    <div class="container-fluid" id="container1">
+        <div class="row">
+            <div class="col-sm-6" style="margin-top: 10px;">
+                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Candidate Name:
+                    </span> {{ i.user_name }}</p>
+                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Assessment Name:
+                    </span> {{ i.assessment_name }} </p>
+            </div>
+            <div class="col-sm-6" style="margin-top: 10px;">
+                <div class="row" style="margin-left: 10px;">
+                    <p class="card-text ml-sm-auto">Overall Accuracy of Student</p>
+                </div>
+                <div class="row" style="margin-left: 10px;">
+                    <h2 class="ml-sm-auto">{{ i.total_accurecy }}%</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% for i in recordings %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-4" style="margin-top: 10px; margin-bottom: 25px;">Question {{ forloop.counter }}
+                    </div>
+                    <div class="col-md-8" style="margin-top: 10px; margin-bottom: 25px;">{{ i.que }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4" style="margin-top: 10px; margin-bottom: 25px;">Recorded
+                        Answer</div>
+                    <div class="col-md-8" style="margin-top: 10px; margin-bottom: 25px;">{{ i.recorded_answer }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4" style="margin-top: 10px; margin-bottom: 25px;">Provided
+                        Answer</div>
+                    <div class="col-md-8" style="margin-top: 10px; margin-bottom: 25px;">{{ i.c_ans }}</div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top: 10px; margin-bottom: 25px;"><h4>Facial Analysis of student are as follows.</h4></div>
+
+                </div>
+                    <div class="row">
+                        <div class="col">
+                            <p style="color: #6A696E;">Confidence</p>
+                        </div>
+                        <div class="col">
+                            <p style="color: #06D85A;">{{ i.confidence }}%</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col ">
+                            <p style="color: #6A696E;">Nervous</p>
+                        </div>
+                        <div class="col  ">
+                            <p style="color: #C62726;">{{ i.nervousness }}%</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col ">
+                            <p style="color: #6A696E;">Neutral</p>
+                        </div>
+                        <div class="col ">
+                            <p style="color: #3626c6;">{{ i.neutral }}%</p>
+                        </div>
+                    </div>
+                
+                
+            </div>
+            
+            <div class="col-lg-4 ml-sm-auto">
+                <div class="row" style="margin-top: 30px;">
+                    <video controls style="width: 100%; border-radius: 40px;">
+                        <source src="{{ url }}{{ i.video }}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+            </div>
+            
+        </div>
+        <hr>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="container-fluid" id="container1">
+        <div class="row">
+            <div class="col-sm-6" style="margin-top: 10px;">
+                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Candidate Name:
+                    </span> {{ i.user_name }}</p>
+                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Assessment Name:
+                    </span> {{ i.assessment_name }} </p>
+            </div>
+        </div>
+    </div>
+    {% for i in recordings %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-4" style="margin-top: 10px; margin-bottom: 25px;">Question {{ forloop.counter }}
+                    </div>
+                    <div class="col-md-8" style="margin-top: 10px; margin-bottom: 25px;">{{ i.que }}</div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-4" style="margin-top: 10px; margin-bottom: 25px;">Recorded
+                        Answer</div>
+                    <div class="col-md-8" style="margin-top: 10px; margin-bottom: 25px;">{{ i.recorded_answer }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p style="color: #6A696E;">Confidence</p>
+                    </div>
+                    <div class="col">
+                        <p style="color: #06D85A;">{{ i.confidence }}%</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col ">
+                        <p style="color: #6A696E;">Nervous</p>
+                    </div>
+                    <div class="col  ">
+                        <p style="color: #C62726;">{{ i.nervousness }}%</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col ">
+                        <p style="color: #6A696E;">Neutral</p>
+                    </div>
+                    <div class="col ">
+                        <p style="color: #3626c6;">{{ i.neutral }}%</p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="col-lg-4 ml-sm-auto">
+                <div class="row" style="margin-top: 30px;">
+                    <video controls style="width: 100%; border-radius: 40px;">
+                        <source src="{{ url }}{{ i.video }}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    {% endfor %}
+    {% endif %}
+    
+    {% else %}
+    <div class="container-fluid" id="container1">
+        <div class="row">
+            <div class="col-sm-6" style="margin-top: 10px;">
+                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Candidate Name:
+                    </span> {{ i.user_name }}</p>
+                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Assessment Name:
+                    </span> {{ i.assessment_name }} </p>
+            </div>
+            <div class="col-sm-6" style="margin-top: 10px;">
+                <div class="row" style="margin-left: 10px;">
+                    <p class="card-text ml-sm-auto">Result Not Yet Generateded</p>
+                </div>
+                <div class="row" style="margin-left: 10px;">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-block" id="card_btn" href="{% url 'Generate_Result'  i.submission_id %}"
+                    role="button">Generate Result Now</a>
+            </div>
+        </div>
+        <hr>
+    </div>
+    
+    {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

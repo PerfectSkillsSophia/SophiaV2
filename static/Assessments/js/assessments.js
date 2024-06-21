@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             headers: { "X-CSRFToken": getCookie("csrftoken") },
             mode: "same-origin",
             beforeSend: function () {
-                alert("Please Wait Assessment is Submitting...!");
+                alert("Please press OK to conformation and sit back and wait till next instruction...!");
                 nextQuestionBtn.disabled = true;
                 startButton.disabled = true;
 

@@ -1,0 +1,43 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="section">
+    <div class="container-fluid">
+        <div class="row" style="justify-content: center;"><h3 id="thankyou">Thank You </h3></div>
+        <div class="row" style="justify-content: center; margin-bottom: 100px;"><h4 style="color: #6A696E;">Result will be published soon.</h4></div>
+        <div class="row" style="justify-content: center; margin-bottom: 100px;"><h5>Rate the interview experience out of
+            using options below</h5></div>
+            
+        <form action="{% url 'feedback' %}" method="post">
+    {% csrf_token %}
+    <div class="row" style="margin-top: 50px;">
+        <div class="col">
+            <input type="submit" class="btn btn-lg btn-block btn_in" name="feedback_type" value="ImprovementNeeded">
+        </div>
+        <div class="col">
+            <input type="submit" class="btn btn-lg btn-block btn_cbb" name="feedback_type" value="CouldBeBetter">
+        </div>
+        <div class="col">
+            <input type="submit" class="btn btn-lg btn-block btn_g" name="feedback_type" value="Good">
+        </div>
+    </div>
+</form>
+
+    </div>
+    <div class="image-container">
+        <img src="{% static 'image/Rectangle 4729.png' %}" alt="First Image">
+        
+      </div>
+      <div class="image-container2">
+        <img src="{% static 'image/Rectangle 4730.png' %}" alt="Second Image">
+
+      </div>
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,206 +1,180 @@
 {% extends 'admin_base.html' %}
 {% load static %}
-
 {% block content %}
+<!-- if result is generated -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
+<script>
+   function downloadPDF() {
+    // Hide the download button during PDF generation
+    const downloadButton = document.getElementById('downloadButton');
+    downloadButton.style.display = 'none';
 
-<div class="section">
-    <div class="container-fluid" id="analysis">
+    // Get the HTML content of the section with id "htmlContent"
+    const element = document.getElementById('section');
+    
+    // Temporarily remove all video elements
+    const videoElements = document.querySelectorAll('.video-container');
+    videoElements.forEach(video => {
+        video.style.display = 'none';
+    });
+
+    const infoElements = document.querySelectorAll('.info');
+    infoElements.forEach(info => {
+        info.classList.remove('col-sm-6');
+        info.classList.add('col-sm-12');
+    });
+
+    // Use html2pdf library to create a PDF
+    html2pdf(element, {
+        filename: 'Final_Result.pdf',
+        image: { type: 'jpeg', quality: 2 },
+        html2canvas: { scale: 5 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', pagesplit: true }
+    }).then(() => {
+        // Restore the video elements after PDF generation
+        videoElements.forEach(video => {
+            video.style.display = 'block';
+        });
+
+        // Show the download button after PDF generation
+        downloadButton.style.display = '';
+
+        // Refresh the browser after the code execution
+        location.reload();
+    });
+}
+
+
+
+</script>
+{% for i in F_result %}
+{% if i.result_generate %}
+<div class="section" id="section" style="margin-top: 10px;">
+    <div class="container h-100" style="margin-top: 5px;">
         <div class="row">
-            <a href="{% url 'All_Submissions' %}">
-                <img src="{% static 'image/back.png' %}" id="back_btn" alt="">
-            </a>
-            <h3 id="h3_aa"> All Submissions</h3>
-            <div class="ml-auto"> <!-- Add this div to push the button to the right -->
-                <a class="btn" id="card_btn" href="#" role="button">Download Result</a>
+            <div class="col-md-5">
+                <h2 style=" color:rgb(0, 0, 0); margin-right: 10px;">Final Result </h2>
             </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-3">
+                <a class="btn" id="downloadButton" onclick="downloadPDF()" style="margin-right: 20px;" href="#"
+                    role="button"><i class="fas fa-download" style="margin-right: 5px;"></i>Download Result</a>
 
+            </div>
         </div>
+        <hr color="black">
     </div>
-    <hr>
+    {% if i.assessment_type == 'Descriptive' %}
+    <div class="container h-100" style="margin-top: 5px;">
+        <div class="row">
+            <div class="col-md-5">
+                <h5 style=" color:#ff5656; margin-right: 10px;">User Name: {{ i.user_name }}</h5>
+                <h6 style=" color:#0096ff; margin-right: 10px;">Assessment Name: {{ i.assessment_name }}</h6>
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-3">
+                <h5 style=" color:#ff5656;"><span style="font-weight: bold; color:#0096ff;">Over All accurecy of student
+                        is : </span> {{ i.total_accurecy }}%</h5>
+            </div>
+        </div>
+        <hr color="black">
+    </div>
+    {% else %}
+    <div class="container h-100" style="margin-top: 5px;">
+        <div class="row">
+            <div class="col-md-5">
+                <h5 style=" color:#ff5656; margin-right: 10px;">User Name: {{ i.user_name }}</h5>
+                <h6 style=" color:#0096ff; margin-right: 10px;">Assessment Name: {{ i.assessment_name }}</h6>
+            </div>
+        </div>
+        <hr color="black">
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+
+
     {% for i in F_result %}
     {% if i.result_generate %}
-    {% if i.assessment_type == 'Descriptive' %}
-    <div class="container-fluid" id="container1">
-        <div class="row">
-            <div class="col-sm-6" style="margin-top: 10px;">
-                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Candidate Name:
-                    </span> {{ i.user_name }}</p>
-                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Assessment Name:
-                    </span> {{ i.assessment_name }} </p>
-            </div>
-            <div class="col-sm-6" style="margin-top: 10px;">
-                <div class="row" style="margin-left: 10px;">
-                    <p class="card-text ml-sm-auto">Overall Accuracy of Student</p>
-                </div>
-                <div class="row" style="margin-left: 10px;">
-                    <h2 class="ml-sm-auto">{{ i.total_accurecy }}%</h2>
-                </div>
-            </div>
-        </div>
-
-    </div>
     {% for i in recordings %}
-    <div class="container-fluid">
+    <div class="container h-100" style="margin-top: 5px;">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-md-4" style="margin-top: 10px; margin-bottom: 25px;">Question {{ forloop.counter }}
+            <div class="col-sm-6 info" style="margin-top: 20px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Question {{ forloop.counter }} : </span></Question>
+                            {{ i.que }}</h5>
                     </div>
-                    <div class="col-md-8" style="margin-top: 10px; margin-bottom: 25px;">{{ i.que }}</div>
                 </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-4" style="margin-top: 10px; margin-bottom: 25px;">Recorded
-                        Answer</div>
-                    <div class="col-md-8" style="margin-top: 10px; margin-bottom: 25px;">{{ i.recorded_answer }}</div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <p> <span style="font-weight: bold;">Recorded Answer :</span>
+                            {{ i.recorded_answer }}
+                        </p>
+                    </div>
                 </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-4" style="margin-top: 10px; margin-bottom: 25px;">Provided
-                        Answer</div>
-                    <div class="col-md-8" style="margin-top: 10px; margin-bottom: 25px;">{{ i.c_ans }}</div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <p style=" color:#ff5656;">Accuracy of Answer is: <span
+                                style="font-weight:bold; color:#000000;">{{ i.answer_accurecy }} %
+                            </span></p>
+                        <p style=" color:#ff5656;">Confidence : <span style="font-weight:bold; color:#000000;">
+                                {{ i.confidence }} %</span>
+                            Nervousness : <span style="font-weight:bold; color:#000000;">
+                                {{ i.nervousness }} %</span>
+                            Neutral_Emotions : <span style="font-weight:bold; color:#000000;">
+                                {{ i.neutral }} %</span>
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4 ml-sm-auto">
-                <div class="row">
-                    <div class="col">
-                        <div class="row">
-                            <div class="col">
-                                <p style="color: #6A696E;">Confidence</p>
-                            </div>
-                            <div class="col">
-                                <p style="color: #06D85A;">{{ i.confidence }}%</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col ">
-                                <p style="color: #6A696E;">Nervous</p>
-                            </div>
-                            <div class="col  ">
-                                <p style="color: #C62726;">{{ i.nervousness }}%</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col ">
-                                <p style="color: #6A696E;">Neutral</p>
-                            </div>
-                            <div class="col ">
-                                <p style="color: #3626c6;">{{ i.neutral }}%</p>
-                            </div>
-                        </div>
+            <div class="col-sm-6 video-container">
+
+                <div class="card">
+
+                    <div class="card-body">
+                        <video width="100%" height="60%" controls>
+                            <source src="{{ url }}{{ i.video }}" type="video/webm">
+                        </video>
                     </div>
-
                 </div>
-                <div class="row" style="margin-top: 30px;">
-                    <video controls style="width: 100%; border-radius: 40px;">
-                        <source src="{{ url }}{{ i.video }}" type="video/webm">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-
             </div>
         </div>
+        <hr color="black">
     </div>
     {% endfor %}
+
     {% else %}
-    <div class="container-fluid" id="container1">
-        <div class="row">
-            <div class="col-sm-6" style="margin-top: 10px;">
-                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Candidate Name:
-                    </span> {{ i.user_name }}</p>
-                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Assessment Name:
-                    </span> {{ i.assessment_name }} </p>
-            </div>
-        </div>
-    </div>
-    {% for i in recordings %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-md-4" style="margin-top: 10px; margin-bottom: 25px;">Question {{ forloop.counter }}
-                    </div>
-                    <div class="col-md-8" style="margin-top: 10px; margin-bottom: 25px;">{{ i.que }}</div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-4" style="margin-top: 10px; margin-bottom: 25px;">Recorded
-                        Answer</div>
-                    <div class="col-md-8" style="margin-top: 10px; margin-bottom: 25px;">{{ i.recorded_answer }}</div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <p style="color: #6A696E;">Confidence</p>
-                    </div>
-                    <div class="col">
-                        <p style="color: #06D85A;">{{ i.confidence }}%</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col ">
-                        <p style="color: #6A696E;">Nervous</p>
-                    </div>
-                    <div class="col  ">
-                        <p style="color: #C62726;">{{ i.nervousness }}%</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col ">
-                        <p style="color: #6A696E;">Neutral</p>
-                    </div>
-                    <div class="col ">
-                        <p style="color: #3626c6;">{{ i.neutral }}%</p>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="col-lg-4 ml-sm-auto">
-                <div class="row" style="margin-top: 30px;">
-                    <video controls style="width: 100%; border-radius: 40px;">
-                        <source src="{{ url }}{{ i.video }}" type="video/webm">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-        </div>
-        <hr>
-    </div>
-    {% endfor %}
-    {% endif %}
-    
-    {% else %}
-    <div class="container-fluid" id="container1">
-        <div class="row">
-            <div class="col-sm-6" style="margin-top: 10px;">
-                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Candidate Name:
-                    </span> {{ i.user_name }}</p>
-                <p style="margin-left: 10px;" class="card-text"><span style="color: #ffffffa7;">Assessment Name:
-                    </span> {{ i.assessment_name }} </p>
-            </div>
-            <div class="col-sm-6" style="margin-top: 10px;">
-                <div class="row" style="margin-left: 10px;">
-                    <p class="card-text ml-sm-auto">Result Not Yet Generateded</p>
-                </div>
-                <div class="row" style="margin-left: 10px;">
 
+    <section class="vh-100" id="htmlContent" style="background-color: rgb(255, 255, 255);margin-top: 50px;">
+        {% for i in F_result %}
+
+        <div class="container h-100" style="margin-top: 5px;">
+            <div class="row">
+                <div class="col-md-5">
+                    <h5 style=" color:#ff5656; margin-right: 10px;">User Name: {{ i.user_name }}</h5>
+                    <h6 style=" color:#0096ff; margin-right: 10px;">Assessment Name: {{ i.assessment_name }}</h6>
                 </div>
-            </div>
-        </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3" id="resultgeneration">
+                    <h5 style=" color:#ff5656;">Result is not yet generated.</h5>
+                    <a class="btn btn-block" id="card_btn" href="{% url 'Generate_Result'  i.submission_id %}"
+                        role="button">Generate Result Now</a>
+                </div>
+                <div class="lds-hourglass"></div>
 
-    </div>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <a class="btn btn-block" id="card_btn" href="{% url 'Generate_Result'  i.submission_id %}"
-                    role="button">Generate Result Now</a>
             </div>
+            <hr color="black">
         </div>
-        <hr>
-    </div>
-    
-    {% endif %}
-    {% endfor %}
+        {% endfor %}
+    </section>
 </div>
-
+{% endif %}
+{% endfor %}
 {% endblock %}

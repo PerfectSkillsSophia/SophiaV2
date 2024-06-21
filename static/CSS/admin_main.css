@@ -1,6 +1,6 @@
 body {
     background-color: #ffffff;
-    
+
 }
 
 hr {
@@ -18,9 +18,8 @@ hr {
     width: 200px;
     height: 45px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 350;
     font-size: 20px;
-    letter-spacing: 3px;
     color: white;
     text-decoration: none;
     margin-right: 10px;
@@ -37,12 +36,19 @@ hr {
 }
 
 #container1 {
-    margin-top: 50px;
     margin-bottom: 25px;
     background-image: linear-gradient(to right, #120599, #9109C5);
     color: #ffffff;
     border-radius: 5px;
     padding: 25px 25px 25px 25px;
+
+}
+#notresult {
+    margin-bottom: 25px;
+    background-image: linear-gradient(to right, #120599, #9109C5);
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 25px 50px 25px 25px;
 
 }
 
@@ -51,6 +57,7 @@ hr {
     border-radius: 40px;
     background-color: #ffffff;
     color: #000000;
+    font-size: 18px;
     text-decoration: none;
 
 
@@ -61,14 +68,13 @@ hr {
     border-radius: 40px;
     background-color: #ffffff;
     color: #000000;
+    font-size: 18px;
     text-decoration: none;
 
 
 }
 
-#assessment {
-    margin-top: 25px;
-}
+
 
 
 .card {
@@ -93,37 +99,34 @@ hr {
 }
 
 
-#back_btn{
+#back_btn {
     width: 20px;
-    height: 26px;
-    margin-top: 2px;
+    height: 20px;
+    margin-top: 5px;
     margin-left: 5px;
 }
 
-#h3_aa{
+#h3_aa {
     margin-left: 10px;
 }
 
-#assessment {
-    margin-top: 50px;
-}
 
 #container_note {
     margin-top: 25px;
     margin-bottom: 25px;
-    background-image:linear-gradient(90deg, rgba(18, 5, 153, 0.1) 0.18%, rgba(145, 9, 197, 0.1) 100%);
+    background-image: linear-gradient(90deg, rgba(18, 5, 153, 0.1) 0.18%, rgba(145, 9, 197, 0.1) 100%);
     color: #000000;
     border-radius: 5px;
     padding: 25px 25px 25px 25px;
 
 }
 
-.form-control{
+.form-control {
     border-width: 1px;
     border-color: #120599;
 }
 
-#form_btn{
+#form_btn {
     text-align: center;
     font-size: 20px;
     letter-spacing: 3px;
@@ -135,9 +138,6 @@ hr {
 
 }
 
-
-
-
 .section {
     background-color: #ffffff;
     margin-top: 10px;
@@ -146,31 +146,95 @@ hr {
 }
 
 
-#h3_aa{
+#h3_aa {
     margin-left: 10px;
 }
 
-#h3_qa{
+#h3_qa {
     margin-left: 10px;
     margin-bottom: 10px;
 }
 
-#question {
-    margin-top: 50px;
-}
-
-#h3_aa{
+#h3_aa {
     margin-left: 10px;
 }
 
-#submissions {
-    margin-top: 50px;
-}
 
-#all_submissions{
+
+#all_submissions {
     margin-top: 25px;
 }
 
 
+/* Adjust styles as needed */
+.section {
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    /* Center the element horizontally */
+    margin-top: 50px;
+    /* Adjust as needed for vertical centering */
 
+}
 
+#thankyou {
+    background: linear-gradient(to right, #120599, #9109C5);
+    color: transparent;
+    display: inline;
+    background-clip: text;
+    -webkit-background-clip: text;
+    /* Fallback for older browsers */
+}
+
+.btn_in {
+    background-image: linear-gradient(to right, #D52115, #EC9007);
+    color: white;
+    border: none;
+}
+
+.btn_cbb {
+    background: linear-gradient(to right, #187910, #47F963);
+    border: none;
+    color: white;
+}
+
+.btn_g {
+    background: linear-gradient(to right, #110599, #77CEFF);
+    color: white;
+    border: none;
+}
+
+.image-container {
+    position: fixed;
+    /* Use fixed positioning if you don't want it to move with scrolling */
+    bottom: 90px;
+    /* Adjust this value to control the distance above the bottom */
+    left: 0px;
+    display: flex;
+    align-items: flex-end;
+    /* Align images at the bottom */
+
+}
+
+.image-container img {
+    margin-right: 10px;
+    /* Adjust this value to control the space between the images */
+}
+
+.image-container2 {
+    position: fixed;
+    /* Use fixed positioning if you don't want it to move with scrolling */
+    bottom: 0px;
+    /* Adjust this value to control the distance above the bottom */
+    left: 0px;
+    /* Adjust this value to control the distance from the left */
+
+    display: flex;
+    align-items: flex-end;
+    /* Align images at the bottom */
+}
+
+.image-container2 img {
+    margin-right: 10px;
+    /* Adjust this value to control the space between the images */
+}

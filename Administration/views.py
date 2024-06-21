@@ -31,7 +31,7 @@ def Add_Assessments (request):
 @login_required(login_url='login')
 def All_Submissions (request):
         url = settings.MEDIA_URL
-        all_data = Recording.objects.all().values('user_name', 'assessment_name', 'submission_id').distinct()
+        all_data = Recording.objects.all().values('user_name', 'assessment_name', 'submission_id','assessmenttype').distinct()
         return render(request,'all_submissions.html',{'all_data':all_data,'url':url})
 
 @staff_member_required(login_url='login')

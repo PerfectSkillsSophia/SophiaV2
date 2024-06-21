@@ -16,13 +16,13 @@
 
     <!--Page Content Starts-->
     <div id="bkbtn1">
-        <a href="{% url 'Home' %}"> <button id="bkB1"><img src="{% static 'image/Icons/Vector (8).png' %}" id="bkImg1">
+        <a style="text-decoration: none;"href="{% url 'Home' %}"> <button id="bkB1"><img src="{% static 'image/Icons/Vector (8).png' %}" id="bkImg1">
                 <p id="bkLbl1">Back</p>
             </button></a>
     </div>
 
     <div id="lobtn1">
-        <a href="{% url 'logout' %}"><button id="loB1">
+        <a style="text-decoration: none;"href="{% url 'logout' %}"><button id="loB1">
                 <p id="loLbl1">Log Out</p>
             </button></a>
     </div>
@@ -44,9 +44,9 @@
         <p id="hr1"></p>
 
         <span id="span1">
-            <p id="txt5"><b>For each question, you will follow the following steps:</b>
+            <p id="txt5" style="margin-bottom: 0;"><b>For each question, you will follow the following steps:</b>
                 <br><br>
-                This video interview will help us understand your background. Be mindful of your time and for the video
+                This video interview will help us understand your background.<br> Be mindful of your time and for the video
                 responses, stay on topic so you can convey a complete response.
 
             </p>
@@ -54,9 +54,7 @@
 
         <span id="span1">
             <ol style="padding-left: 10vw;padding-right: 10vw;">
-                <li id="txt6"><b>After Proceed Paste ASSESSMENT CODE</b></li>
-                <li id="txt6">Click <b>Start</b> to start your video streaming</li>
-                <li id="txt6">Click <b>Record</b> to start video recording</li>
+                <li id="txt6">Click <b>Start</b> to start assessment recording</li>
                 <li id="txt6">Click <b>Next</b> to go on next question</li>
                 <li id="txt6">Click <b>Stop</b> to stop video recording</li>
                 <li id="txt6">Click <b>Submit</b> to submit your video assessment</li>
@@ -65,8 +63,8 @@
         <br>
 
         <span id="span1">
-            <a href="{% url 'Assessments' assessment_code=assessment_code %}"><button id="btn1"
-                    style="height: 3vh;">
+            <a style="text-decoration: none;" href="{% url 'Assessments' assessment_code=assessment_code %}"><button id="btn1"
+                    style="height: 4vh;">
                     <p id="btnLbl1">Start Now</p><span style="display: inline-block;width: 35%;"></span><img
                         src="{% static 'image/Icons/Vector (13).png' %}" id="btImg1"><span
                         style="display: inline-block;width: 5%;"></span>
@@ -74,6 +72,10 @@
         </span>
 
     </div>
+    <div class="powered-by">
+        Powered by Perfect Skills
+    </div>
+
 
     <!--Page Content Ends-->
 

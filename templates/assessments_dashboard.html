@@ -20,13 +20,13 @@
 
     <!--NavBar Starts-->
     <div id="bkbtn1">
-        <a href="{% url 'Home' %}"> <button id="bkB1"><img src="{% static 'image/Icons/Vector (8).png' %}" id="bkImg1">
+        <a  style="text-decoration: none;" href="{% url 'Home' %}"> <button id="bkB1"><img src="{% static 'image/Icons/Vector (8).png' %}" id="bkImg1">
                 <p id="bkLbl1">Back</p>
             </button></a>
     </div>
 
     <div id="lobtn1">
-        <a href="{% url 'logout' %}"><button id="loB1">
+        <a style="text-decoration: none;"href="{% url 'logout' %}"><button id="loB1">
                 <p id="loLbl1">Log Out</p>
             </button></a>
     </div>
@@ -40,8 +40,7 @@
             <p id="txt2">Welcome to Virtual Interview</p>
         </span>
         <span id="span1">
-            <p id="txt3">We understand the importance of this process, so we have created a quick, convenient experience
-                design to help you introduce yourself and you skill set to us here.</p>
+
         </span>
         <span id="span1">
             <p id="txt3">To get started, you will need a <b>front-facing camera and microphone.</b></p>
@@ -56,20 +55,17 @@
             </span>
             <br><br>
             <span id="span1">
-                <button id="btn1" style="height: 3vh;">
+                <button id="btn1" style="height: 4vh;">
                     <p id="btnLbl1">Proceed</p><span style="display: inline-block;width: 35%;"></span><img
                         src="{% static 'image/Icons/Vector (13).png' %}" id="btImg1"><span
                         style="display: inline-block;width: 5%;"></span>
                 </button>
             </span>
         </form>
-        <span id="span1">
-            <p id="txt3">First time? See how it works.</p>
-        </span>
-        <span id="span1">
-            <iframe id="iframe" src="https://www.youtube.com/embed/ad79nYk2keg" style="border-width: 0;">
-            </iframe>
-        </span>
+    </div>
+
+    <div class="powered-by">
+        Powered by Perfect Skills
     </div>
 
     <!--Page Content Ends-->

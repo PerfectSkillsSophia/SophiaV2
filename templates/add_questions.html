@@ -7,23 +7,19 @@
     <div class="container-fluid" id="question">
         <div class="row">
             <a href="{% url 'Dashboard' %}">
-                <img src="{% static 'image/back.png' %}" id="back_btn" alt="">
+                <img src="{% static 'image/backbutton.png' %}" id="back_btn" alt="">
             </a>
             <h3 id="h3_aa"> Add Questions</h3>
         </div>
     </div>
-    <hr>
     <div class="container-fluid" id="container_note">
         <div class="row">
             <div class="col">
                 <h6>Note:</h6>
-                <ol style="color: #7D7D7D;">
-                    <li>Directly start writing Question don't use "que:-"</li>
-                </ol>
+                <p style="color: #7D7D7D;">1. Directly start writing Question don't use "que:-"</p>
             </div>
         </div>
     </div>
-    <hr>
     <div class="container-fluid" id="question_form">
         <div class="row">
             <div class="col">
@@ -66,24 +62,24 @@
     <div class="container-fluid">
         
         <div class="row">
-            <h3 id="h3_qa"> Question and Answers</h3>
+            <h3 id="h3_qa"> Questions and Answers</h3>
         </div>
         {% for assessment in assessment.all %}
         {% if assessment.assessment_type == "Subjective" %}
         {% for que in ques.all reversed %}
         <div class="row">
-            <p style="margin-left: 10px;" class="card-text"><span style="color: #6A696E;">Question:
+            <p style="margin-left: 10px; font-size:18px;" class="card-text"><span style="color: #6A696E;">Question:
                 </span>{{ que.question }}</p>
         </div>
         {% endfor %}
         {% else %}
         {% for que in ques.all reversed %}
         <div class="row">
-            <p style="margin-left: 10px;" class="card-text"><span style="color: #6A696E;">Question:
+            <p style="margin-left: 10px; font-size:18px;" class="card-text"><span style="color: #6A696E;">Question:
                 </span>{{ que.question }}</p>
         </div>
         <div class="row" style="margin-bottom: 5px;">
-            <p style="margin-left: 10px;" class="card-text"><span style="color: #6A696E;">Answer:
+            <p style="margin-left: 10px; font-size:18px;" class="card-text"><span style="color: #6A696E;">Answer:
                 </span>{{ que.correctanswer }}</p>
         </div>
         

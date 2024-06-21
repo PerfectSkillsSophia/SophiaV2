@@ -1,4 +1,5 @@
-from django.shortcuts import render 
+from django.shortcuts import render , redirect
+from Accounts.views import logoutUser
 from Administration. models import *
 from Assessments.models import *
 from django.http import JsonResponse
@@ -38,6 +39,20 @@ def Assessments (request,assessment_code):
 		assessment_name = assessment.assessment_name
 		return render(request,'assessment.html',{'question': allque,'username':username,'assessment_name':assessment_name})
 
+@login_required(login_url='login')
+def feedback_page(request):
+	return render(request,'feedback.html')
+
+@login_required(login_url='login')
+def feedback(request):
+    if request.method == 'POST':
+        # Create a Feedback object with user and feedback type and save to database
+        feedback_type = request.POST.get('feedback_type')
+        feedback = Feedback(user_name=request.user, feedback_type=feedback_type)
+        feedback.save()
+        # Redirect to thank you page
+        return redirect(logoutUser)
+	
 
 @login_required(login_url='login')
 def Upload_Video (request):
@@ -57,7 +72,7 @@ def Upload_Video (request):
 			q = Question.objects.get(questionId = id).question
 			ca = Question.objects.get(questionId = id).correctanswer
 			#question_id = question_ids[index]
-			Recording.objects.create(video=uploaded_file, user_name=request.user,assessment_name=assessment_name,submission_id=submission_id,question_id=id,que = q,c_ans = ca)
+			Recording.objects.create(video=uploaded_file, user_name=request.user,assessment_name=assessment_name,submission_id=submission_id,question_id=id,que = q,c_ans = ca,assessmenttype=assessment_type)
 		FinalResult.objects.create(submission_id=submission_id,user_name=request.user,assessment_name=assessment_name,assessment_type=assessment_type)     
 		return JsonResponse({'success': True})
 		

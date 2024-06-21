@@ -7,12 +7,11 @@
         <div class="container-fluid" id="submissions">
             <div class="row">
                 <a href="{% url 'Dashboard' %}">
-                    <img src="{% static 'image/back.png' %}" id="back_btn" alt="">
+                    <img src="{% static 'image/backbutton.png' %}" id="back_btn" alt="">
                 </a>
                 <h3 id="h3_aa"> All Submissions</h3>
             </div>
         </div>
-        <hr>
         <div class="container-fluid" id="all_submissions">
             <div class="row" id="card_cont">
                 {% for item in all_data %}
@@ -23,7 +22,9 @@
                             </h5>
                             <p class="card-text"><span style="color: #6A696E;">Assessment Name: 
                                 </span>{{ item.assessment_name }}</p>
-                            <a class="btn btn-lg btn-block" id="card_btn" href="{% url 'Result'  item.submission_id %}" role="button">View Analysis</a>
+                            <p class="card-text"><span style="color: #6A696E;">Assessment Type: 
+                                </span>{{ item.assessmenttype }}</p>
+                            <a class="btn" id="card_btn" href="{% url 'Result'  item.submission_id %}" role="button">View Analysis</a>
                         </div>
                     </div>
                 </div>
@@ -31,7 +32,6 @@
             </div>
         </div>
     </div>
-    <hr>
     </div>
 
 {% endblock %}

@@ -95,7 +95,7 @@
 
 #box6{
     height: 27vh;
-    width: 27.3vw;
+    width: 22vw;
     left: 5vw;
     top: 5vh;
     background-color: #FFFFFF;
@@ -150,6 +150,7 @@
     top: 7vh;
     left: 7vw;
     z-index:9;
+    cursor: pointer;
 }
 /*BGDesign CSS End*/
 
@@ -186,7 +187,7 @@
 }
 
 #underl1{
-    border-bottom: 3px solid #9109C5;
+    border-bottom: 2.5px solid #9109C5;
     align-items: center;
 }
 
@@ -204,7 +205,7 @@
 }
 
 #uname::placeholder, #passwd::placeholder, #email::placeholder, #cpasswd::placeholder{
-    font-size: 1.96vh;
+    font-size: 2.24vh;
 }
 
 #unImg1{
@@ -223,6 +224,7 @@
     font-family: sans-serif;
     padding-left: 10px;
     padding-right: 10px;
+    margin-right: 10px;
 }
 
 #underl2{
@@ -256,14 +258,14 @@
 }
 
 #psImg1{
-    height: 1.96vh;
+    height: 1.40vh;
     width: 1.96vh;
 }
 
 
 
 #cpImg1{
-    height: 1.96vh;
+    height: 1.68vh;
     width: 1.96vh;
 }
 
@@ -292,8 +294,9 @@
 
 #lbl2{
     color: #848387;
-    font-size: 1.68vh;
+    font-size: 1.96vh;
     font-family: sans-serif;
+    margin-right: 4px;
 }
 
 #aref2{
@@ -418,7 +421,7 @@
 #content1{
     text-align: center;
     font-family: sans-serif;
-    font-size: 40px;
+    font-size: 36px;
     color: #FFFFFF;
 }
 
@@ -426,7 +429,7 @@
     text-align: center;
     font-family: sans-serif;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 36px;
     color: #FFFFFF;
 }
 
@@ -435,80 +438,15 @@
     background-color: #FFFFFF;
     width: 244px;
     text-align: center;
-    font-family: sans-serif;#margin2{
-        position: fixed;
-        top: 0;
-        left: 0;
-        padding-top: 5vh;
-        padding-bottom: 5vh;
-        padding-left: 5vw;
-        padding-right: 5vw;
-        z-index: 6;
-    }
-    
-    #contentMain{
-        display: grid;
-        align-content: center;
-        height:90vh;
-        width: 90vw;
-        top: 5vh;
-        left: 5vw;
-        border-radius: 40px;
-        position: fixed;
-        z-index: 7;
-    }
-    
-    #content1{
-        text-align: center;
-        font-family: sans-serif;
-        font-size: 40px;
-        color: #FFFFFF;
-    }
-    
-    #content2{
-        text-align: center;
-        font-family: sans-serif;
-        font-weight: bold;
-        font-size: 40px;
-        color: #FFFFFF;
-    }
-    
-    #button1{
-        min-height: 4.8vh;
-        background-color: #FFFFFF;
-        width: 244px;
-        text-align: center;
-        font-family: sans-serif;
-        font-size: 30px;
-        font-weight: lighter;
-        border: 1px;
-        border-radius: 18px;
-        border-color: #FFFFFF;
-        box-shadow: 2px 2px 5px #600080;
-        color:#9109C5;
-    }
-    
-    #button2{
-        min-height: 4.8vh;
-        background-color: #FFFFFF;
-        width: 430px;
-        text-align: center;
-        font-family: sans-serif;
-        font-size: 30px;
-        font-weight: lighter;
-        border: 1px;
-        border-radius: 18px;
-        border-color: #FFFFFF;
-        box-shadow: 2px 2px 5px #600080;
-        color:#9109C5;
-    }
-    font-size: 30px;
+    font-family: sans-serif;
+    font-size: 22px;
     font-weight: lighter;
     border: 1px;
     border-radius: 18px;
     border-color: #FFFFFF;
     box-shadow: 2px 2px 5px #600080;
     color:#9109C5;
+    cursor: pointer;
 }
 
 #button2{
@@ -517,13 +455,14 @@
     width: 430px;
     text-align: center;
     font-family: sans-serif;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: lighter;
     border: 1px;
     border-radius: 18px;
     border-color: #FFFFFF;
     box-shadow: 2px 2px 5px #600080;
     color:#9109C5;
+    cursor: pointer;
 }
 /*Content CSS End*/
 
@@ -623,6 +562,38 @@
         top: 7vh;
         left: 7vw;
         z-index: 7;
+    }
+
+    #button1{
+        min-height: 4.8vh;
+        background-color: #FFFFFF;
+        width: 244px;
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 30px;
+        font-weight: lighter;
+        border: 1px;
+        border-radius: 18px;
+        border-color: #FFFFFF;
+        box-shadow: 2px 2px 5px #600080;
+        color:#9109C5;
+        cursor:pointer;
+    }
+    
+    #button2{
+        min-height: 4.8vh;
+        background-color: #FFFFFF;
+        width: 430px;
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 30px;
+        font-weight: lighter;
+        border: 1px;
+        border-radius: 18px;
+        border-color: #FFFFFF;
+        box-shadow: 2px 2px 5px #600080;
+        color:#9109C5;
+        cursor:pointer;
     }
 
 

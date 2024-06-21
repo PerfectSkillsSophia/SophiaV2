@@ -18,25 +18,23 @@
         <div class="container-fluid" id="assessment">
             <div class="row">
                 <a href="{% url 'Dashboard' %}">
-                    <img src="{% static 'image/back.png' %}" id="back_btn" alt="">
+                    <img src="{% static 'image/backbutton.png' %}" id="back_btn" alt="">
                 </a>
                 <h3 id="h3_aa"> Add Assessments</h3>
             </div>
         </div>
-        <hr>
+
         <div class="container-fluid" id="container_note">
             <div class="row">
                 <div class="col">
                     <h6>Note:</h6>
-                    <ol style="color: #7D7D7D;">
-                        <li>Do not start Assessment name with Numbers and special characters. </li>
-                        <li>Space in the Assessment name is not allowed. </li>
-                        <li>Use "_" if want please don't use any other characters to avoid conflict. </li>
-                    </ol>
+                    <p style="color: #7D7D7D;">1. Do not start Assessment name with numbers and special characters.</p>
+                    <p style="color: #7D7D7D;">2. Space in the Assessment name is not allowed.</p>
+                    <p style="color: #7D7D7D;">3. Use "_" if want please don't use any other characters to avoid conflict.</p>
                 </div>
             </div>
         </div>
-        <hr>
+
         <div class="container-fluid" id="assessment_form">
             <div class="row">
                 <div class="col">
@@ -62,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <hr>
+       
     </div>
     <script src="{% static 'Administration/js/add_assessments.js' %}" ></script>
 
